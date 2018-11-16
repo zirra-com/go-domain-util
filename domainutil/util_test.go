@@ -173,6 +173,12 @@ func TestDomain(t *testing.T) {
 		"beta.gama.google.co.uk":      true,
 		"something.blogspot.com":      true,
 		"something.blogspot.co.uk":    true,
+		"github.io":                   true,
+		"www.github.io":               true,
+		"poznan.pl":                   true,
+		"www.poznan.pl":               true,
+		"co.uk":                       false,
+		"www.pmg":                     false,
 	}
 
 	//Test each domain, some should fail (expected)

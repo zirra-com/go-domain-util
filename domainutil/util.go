@@ -60,7 +60,6 @@ func Domain(url string) string {
 				top = "." + top
 			}
 			top = parts[i] + top
-
 			// Check for TLD
 			if currentTld == nil {
 				return top // Return current output because we no longer have the TLD
@@ -68,6 +67,9 @@ func Domain(url string) string {
 				if tldEntry != nil {
 					currentTld = *tldEntry
 				} else {
+					if _, ok := (*tlds)[parts[i]]; !ok && (i == 0 || parts[i-1] == "www") {
+						return top
+					}
 					currentTld = nil
 				}
 				foundTld = true
@@ -75,7 +77,6 @@ func Domain(url string) string {
 			} else if foundTld {
 				return top // Return current output if tld was found before
 			}
-
 			// Return empty string if no tld was found ever
 			return ""
 		}
