@@ -1,1 +1,1 @@
-package go-domain-util
+package domainutil
