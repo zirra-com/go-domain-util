@@ -64,12 +64,12 @@ func Domain(url string) string {
 			if currentTld == nil {
 				return top // Return current output because we no longer have the TLD
 			} else if tldEntry, found := currentTld[parts[i]]; found {
+				if i == 1 && parts[i-1] == "www" {
+					return top
+				}
 				if tldEntry != nil {
 					currentTld = *tldEntry
 				} else {
-					if _, ok := (*tlds)[parts[i]]; !ok && (i == 0 || parts[i-1] == "www") {
-						return top
-					}
 					currentTld = nil
 				}
 				foundTld = true
